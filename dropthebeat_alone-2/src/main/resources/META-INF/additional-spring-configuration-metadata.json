@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "NotEquals.modifyUserBean.user_pw",
+    "type": "java.lang.String",
+    "description": "A description for 'NotEquals.modifyUserBean.user_pw'"
+  },
+  {
+    "name": "NotEquals2.modifyUserBean.user_pw2",
+    "type": "java.lang.String",
+    "description": "A description for 'NotEquals2.modifyUserBean.user_pw2'"
+  }
+]}

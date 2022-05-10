@@ -44,6 +44,12 @@ public class UserInfo {
 	public LocalDate getCurrentDate() {
 		return currentDate;
 	}
+	
+	private boolean userIdExist;
+		
+	public UserInfo() {
+		this.userIdExist = false;
+	}
 
 	public void setCurrentDate(LocalDate currentDate) {
 		this.currentDate = currentDate;
@@ -96,6 +102,16 @@ public class UserInfo {
 	public void setDateString(String dateString) {
 		this.dateString = dateString;
 	}
+
+	public boolean isUserIdExist() {
+		return userIdExist;
+	}
+
+	public void setUserIdExist(boolean userIdExist) {
+		this.userIdExist = userIdExist;
+	}
+	
+	
 }
 	
 	
