@@ -18,23 +18,19 @@ public class UserInfo {
 	
 	private int user_idx;
 	
-	@NotNull(message = "값이 비어있으면 안됩니다..!")
-	@NotBlank
+
 	@Size(min=2,max=12)
 	@Pattern(regexp="[a-zA-Z가-힣0-9]*",message = "영소문자,대문자,한글,숫자만 가능합니다.")
 	private String user_name;
-	@NotBlank
-	@NotNull(message = "값이 비어있으면 안됩니다..!")
+
 	@Size(min=4,max=20)
 	@Pattern(regexp="[a-zA-Z가-힣0-9]*",message = "영소문자,대문자,한글,숫자만 가능합니다.")
 	private String user_id;
-	@NotBlank
-	@NotNull(message = "값이 비어있으면 안됩니다..!")
+
 	@Size(min=4,max=20)
 	@Pattern(regexp="[a-zA-Z0-9]*",message = "영소문자,대문자,숫자만 가능합니다.")
 	private String user_pw;
-	@NotBlank
-	@NotNull(message = "값이 비어있으면 안됩니다..!")
+
 	@Size(min=4,max=20)
 	@Pattern(regexp="[a-zA-Z0-9]*",message = "영소문자,대문자,숫자만 가능합니다.")
 	private String user_pw2;
@@ -46,9 +42,19 @@ public class UserInfo {
 	}
 	
 	private boolean userIdExist;
-		
+	private boolean userLogin;
+	
 	public UserInfo() {
 		this.userIdExist = false;
+		this.userLogin = false;
+	}
+
+	public boolean isUserLogin() {
+		return userLogin;
+	}
+
+	public void setUserLogin(boolean userLogin) {
+		this.userLogin = userLogin;
 	}
 
 	public void setCurrentDate(LocalDate currentDate) {

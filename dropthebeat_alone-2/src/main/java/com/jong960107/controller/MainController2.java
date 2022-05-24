@@ -5,19 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/board")
-public class BoardController {
+@RequestMapping(value="/main2")
+public class MainController2 {
 
-	@GetMapping("/free")
-	public String free() {
-		return "board/free";
+	@GetMapping("/index2")
+	public String main2() {
+		return "main2/index2";
 	}
-	
-	@GetMapping("/record")
-	public String record() {
-		return "board/record";
-	}
-	
-	
 	
 }

@@ -8,28 +8,26 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-.parent {
-	height:100px;
-	display: grid;
-	grid-template-columns: 1fr 3fr 1fr;
-	grid-template-rows: 1fr;
-	grid-column-gap: 0px;
-	grid-row-gap: 0px;
-	line-height: 100px;
+.div1{
+	position: fixed;
+	bottom:0;
+	left: 0;
+	right: 0;
+	
 }
 
-.div1 { 
-grid-area: 1 / 2 / 2 / 3; 
-text-align: center;
+span{
+	display:flex;
+	text-align: center;
+	justify-content: center;
+
 }
 </style>
 
 </head>
 <body>
-<div class="parent">
 <div class="div1">
-	문의사항: jong960107@naver.com
+	<span>문의사항: jong960107@naver.com</span>
  </div>
-</div>
 </body>
 </html>

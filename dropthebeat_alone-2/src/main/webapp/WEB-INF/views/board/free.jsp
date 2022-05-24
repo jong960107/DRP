@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-자유게시판
+자유게시판 ajax 성공~!
 </body>
 </html>

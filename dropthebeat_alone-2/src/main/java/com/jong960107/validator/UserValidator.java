@@ -30,16 +30,22 @@ public class UserValidator implements Validator{
 	public void validate(Object target, Errors errors) {
 		// TODO Auto-generated method stub
 		UserInfo userBean = (UserInfo)target;
+		String beanName = errors.getObjectName();
+		System.out.println(beanName);
 		
-		
-		if(userBean.getUser_pw().equals(userBean.getUser_pw2())==false) {
-			errors.rejectValue("user_pw","NotEquals");
-			errors.rejectValue("user_pw2","NotEquals2");
+		if(beanName.equals("modifyUserInfo")|| beanName.equals("modifyUserInfo2")) {
+			if(userBean.getUser_pw().equals(userBean.getUser_pw2())==false) {
+				errors.rejectValue("user_pw","NotEquals");
+				errors.rejectValue("user_pw2","NotEquals2");
+			}
+			if(beanName.equals("modifyUserInfo")) {
+				if(userBean.isUserIdExist() == false) {
+					errors.rejectValue("user_id", "DontCheckUserIdExist");
+				}
 		}
+	}
 		
-		if(userBean.isUserIdExist() == false) {
-			errors.rejectValue("user_id", "DontCheckUserIdExist");
-		}
+		
 		
 	}
 

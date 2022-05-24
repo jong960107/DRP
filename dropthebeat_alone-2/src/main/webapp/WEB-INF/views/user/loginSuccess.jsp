@@ -4,6 +4,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <c:set var="root" value="/"></c:set>
 <script>
-alert("로그아웃에 성공하셨습니다.");
+alert("로그인에 성공하셨습니다.");
 location.href="${root}main/index"
 </script>

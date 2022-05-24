@@ -18,7 +18,9 @@
 <style type="text/css">
 /* reset.css */
 
-
+	body{
+		overflow: hidden;
+	}
 
 
 	*{
@@ -26,8 +28,9 @@
 	margin:0;
 	}
 	
-	.contentWrapper{
-	width:220px;
+	#contentWrapper{
+	display:block;
+	float:left;
 	}
 	
 	h2{
@@ -79,20 +82,28 @@
 					
 						<br>
 						<ul>
-						  <li> <button> <a href="${root }board/free" >자유게시판</a></button> </li>
-						  <li> <button><a href="${root }board/fun" >유머게시판</a></button>  </li>
-						  <li> <button><a href="${root }board/politics" >정치게시판</a></button>  </li>
-						  <li> <button><a href="${root }board/sport">스포츠게시판</a></button>  </li>
+						  <li> <button id="free"> <a href="${root }board/free" >자유게시판</a></button> </li>
+						  <li> <button id="fun"><a href="${root }board/fun" >유머게시판</a></button>  </li>
+						  <li> <button id="politics"><a href="${root }board/politics" >정치게시판</a></button>  </li>
+						  <li> <button id="sport"><a href="${root }board/sport" >스포츠게시판</a></button>  </li>
 						</ul>
 					</div>
 					
 					<div class="divTop2">
 						<br>
 						<ul>
-						  <li> <button><a href="${root }user/login" >로그인</a></button> </li>
-						  <li> <button><a href="${root }user/signup" >회원가입</a></button>  </li>
-						  <li> <button><a href="${root }user/modify" >정보수정</a></button>  </li>
-						  <li> <button><a href="${root }user/logout">로그아웃</a></button>  </li>
+							<c:choose>
+								<c:when test="${loginUserBean.userLogin==true}">
+									  <li> <button><a href="${root }user/modify" >정보수정</a></button>  </li>
+						  			  <li> <button><a href="${root }user/logout">로그아웃</a></button>  </li>
+								</c:when>
+							
+								<c:otherwise>
+									  <li> <button><a href="${root }user/login" >로그인</a></button> </li>
+									  <li> <button><a href="${root }user/signup" >회원가입</a></button>  </li>
+								</c:otherwise>												
+							</c:choose>
+					
 						</ul>
 					</div>
 			  </div>
