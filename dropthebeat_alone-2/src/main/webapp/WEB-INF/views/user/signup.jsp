@@ -11,6 +11,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 
 <style type="text/css">
@@ -74,27 +78,22 @@
 		margin:0 auto;
 		width: 80%;
 		border:solid 3px white;
-		background-color: skyblue;
-		color:white;
 		margin-bottom: 10px;
 	}
 	
-	#signUpButton:hover{
+	#loginButton{
 		display:block;
-		width:inherit;
 		height:50px;
 		margin:0 auto;
 		width: 80%;
-		border:solid 3px #ECECEC;
-		background-color: skyblue;
-		color:white;
+		border:solid 3px white;
 		margin-bottom: 10px;
-		
 	}
 	
+	
 	#checkUserIdExistButton{
-		width: 20%;
-		height: 30px;
+		width: 90%;
+		height: 40px;
 		border: solid 3px white;
 		background-color: red;
 		color:white;
@@ -103,8 +102,8 @@
 	}
 	
 	#checkUserIdExistButton:hover{
-		width: 20%;
-		height: 30px;
+		width: 90%;
+		height: 40px;
 		border: solid 3px #ececec;
 		background-color: red;
 		color:white;
@@ -148,6 +147,8 @@
 	}
 </script>
 
+
+
 	<div class="container">
 		<form:form action="${root }user/signupPro" method="post" modelAttribute="modifyUserInfo">
 			<form:hidden path="userIdExist"/>
@@ -175,7 +176,10 @@
 				<form:password path="user_pw2" /><br>
 				<form:errors path="user_pw2" style="color:red"></form:errors><br><br>
 			</div>
-			<form:button id="signUpButton">회원가입</form:button>
+			<form:button id="signUpButton" class="btn btn-primary submit">회원가입</form:button>
+			<form:button id="loginButton" class="btn btn-success"  onclick="location.href='${root}user/signup' ">로그인</a></form:button>
+			<form:button type="button" class="btn btn-danger" id="loginButton" onclick="location.href='${root }main/index' " >취소</form:button>
+			
 		</form:form>
 	</div>
 

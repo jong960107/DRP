@@ -23,67 +23,16 @@
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <style type="text/css">
 
-*{
-	box-sizing: border-box;
-}
-
-body{
- width:900px;
- height: 500px;
- margin:0 auto;
- overflow: hidden;
-}
-
-#top{
-	float:left;
-	width:300px;
-	height:450px;
-}
-
-#dataArea{
-	float: left;
-	display: flex;
-	width:600px;
-	height:450px;
-	align-items: center;
-	justify-content: center;
-}
-
 </style>
 
 
 </head>
 <body>
-<div id="top">
- <c:import url="/WEB-INF/views/include/top.jsp"> </c:import>
-</div>
 
-<div id="dataArea"></div>					  
+<c:import url="/WEB-INF/views/include/top.jsp"></c:import>
 
 <c:import url="/WEB-INF/views/include/bottom.jsp"></c:import>
 
 
-<script type="text/javascript" language="javascript">
-
-	window.onload = function(){
-	
-			$.ajax({
-				type : 'get',
-				url : '${root}board/record',
-				dataType : 'html',
-				error : function(data){
-					
-					alert('통신실패!!');
-				},
-				success : function(data){
-				
-					$("#dataArea").html(data) ;
-				}
-				
-				});
-	};
-
-
-</script>
 </body>
 </html>

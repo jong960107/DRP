@@ -8,6 +8,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
 	
@@ -19,17 +23,18 @@
 	}
 	
 		
-	.container{
+	.containerShadow{
 		box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 		width: 350px;
 	}
 	
-		.containerBox{
-		position:relative;
-		left: 10px;
+	.containerBox{
+	position:relative;
+	left: 10px;
 	}
-	
+
 	.containerBox label{
+		top:10px;
 		color: gray;
 		font-family: 'Playfair Display', serif;
 		
@@ -61,38 +66,38 @@
 		h2{
 		text-align: center;
 		font-family: 'Playfair Display', serif;
-		
+		margin-top: 10px;
 	}
+	
 	
 	#loginButton{
 		display:block;
 		height:50px;
 		margin:0 auto;
 		width: 80%;
-		border:solid 3px white;
-		background-color: skyblue;
-		color:white;
-		margin-bottom: 10px;
-	}
-	
-	#loginButton:hover{
-		display:block;
-		width:inherit;
-		height:50px;
-		margin:0 auto;
-		width: 80%;
-		border:solid 3px #ECECEC;
-		background-color: skyblue;
-		color:white;
 		margin-bottom: 10px;
 		
 	}
+	
+	#signUpButton{
+		display:block;
+		height:50px;
+		margin:0 auto;
+		width: 80%;
+		margin-bottom: 10px;
+		
+	}
+	
 	
 </style>
 
 </head>
 <body>
-		<div class="container">
+
+
+		<div class="containerShadow">
+		
+		
 		<form:form action="${root }user/loginPro" method="POST" modelAttribute="loginUserInfo">
 			<form:hidden path="userIdExist"/>
 			<h2>로그인</h2>
@@ -107,8 +112,14 @@
 				<form:password path="user_pw" /><br>
 				<form:errors path="user_pw" style="color:red"></form:errors><br><br>
 			</div>
-			<form:button id="loginButton">로그인</form:button>
+			<form:button class="btn btn-primary submit" id="loginButton">로그인</form:button>
+			<form:button class="btn btn-success" id="signUpButton" onclick="location.href='${root}user/signup' ">회원가입</form:button>
+			<form:button type="button" class="btn btn-danger" id="loginButton" onclick="location.href='${root }main/index' " >취소</form:button>
+		
 		</form:form>
 	</div>
+	
+	
+	
 </body>
 </html>
