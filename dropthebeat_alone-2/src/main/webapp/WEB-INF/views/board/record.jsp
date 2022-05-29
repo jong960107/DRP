@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
 <c:set var="root" value="/"></c:set>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,10 +21,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript">
+
+
+	
+</script>
 
 </head>
 <body>
  <c:import url="/WEB-INF/views/include/top.jsp"> </c:import>
-
+	
 </body>
 </html>

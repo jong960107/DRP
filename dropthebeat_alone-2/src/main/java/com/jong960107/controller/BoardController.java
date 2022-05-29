@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jong960107.beans.BoardInfo;
 import com.jong960107.beans.ContentInfo;
+import com.jong960107.beans.PageInfo;
 import com.jong960107.beans.UserInfo;
 import com.jong960107.service.BoardService;
 
@@ -143,6 +144,7 @@ public class BoardController {
 	@GetMapping("/readFree")
 	public String readFree(@RequestParam("boardInfoBeanIdx1") int boardInfoBeanIdx1,
 									@RequestParam("content_idx") int content_idx,
+									@RequestParam(value="page" ,defaultValue="1") int page,
 									Model model) {
 		
 		ContentInfo readContentBean = boardService.getContentInfo(content_idx);
@@ -150,7 +152,7 @@ public class BoardController {
 		model.addAttribute("content_idx",content_idx);
 		model.addAttribute("boardInfoBeanIdx1",boardInfoBeanIdx1);
 		List <ContentInfo> contentList = new ArrayList<ContentInfo>();
-		contentList = boardService.getContentList(boardInfoBeanIdx1);
+		contentList = boardService.getContentList(boardInfoBeanIdx1,page);
 		model.addAttribute("contentList",contentList);
 		for(ContentInfo obj : contentList) {
 		
@@ -179,12 +181,13 @@ public class BoardController {
 	@GetMapping("/readFun")
 	public String readFun(@RequestParam("boardInfoBeanIdx2") int boardInfoBeanIdx2,
 									@RequestParam("content_idx") int content_idx,
+									@RequestParam(value="page" ,defaultValue="1") int page,
 									Model model) {
 		model.addAttribute("boardInfoBeanIdx2",boardInfoBeanIdx2);
 		ContentInfo readContentBean = new ContentInfo();
 		readContentBean = boardService.getContentInfo(content_idx);
 		model.addAttribute("readContentBean",readContentBean);
-		List <ContentInfo> contentList = boardService.getContentList(boardInfoBeanIdx2);
+		List <ContentInfo> contentList = boardService.getContentList(boardInfoBeanIdx2,page);
 		model.addAttribute("contentList",contentList);
 		
 		return "board/readFun";
@@ -193,12 +196,14 @@ public class BoardController {
 	@GetMapping("/readPolitics")
 	public String readPolitics(@RequestParam("boardInfoBeanIdx3") int boardInfoBeanIdx3,
 									@RequestParam("content_idx") int content_idx,
+									@RequestParam(value="page" ,defaultValue="1") int page,
 									Model model) {
 		model.addAttribute("boardInfoBeanIdx3",boardInfoBeanIdx3);
 		ContentInfo readContentBean = new ContentInfo();
 		readContentBean = boardService.getContentInfo(content_idx);
 		model.addAttribute("readContentBean",readContentBean);
-		List <ContentInfo> contentList = boardService.getContentList(boardInfoBeanIdx3);
+		List <ContentInfo> contentList = boardService.getContentList(boardInfoBeanIdx3,page);
+		
 		model.addAttribute("contentList",contentList);
 		
 		return "board/readPolitics";
@@ -208,12 +213,13 @@ public class BoardController {
 	@GetMapping("/readSport")
 	public String readSport(@RequestParam("boardInfoBeanIdx4") int boardInfoBeanIdx4,
 									@RequestParam("content_idx") int content_idx,
+									@RequestParam(value="page" ,defaultValue="1") int page,
 									Model model) {
 		model.addAttribute("boardInfoBeanIdx4",boardInfoBeanIdx4);
 		ContentInfo readContentBean = new ContentInfo();
 		readContentBean = boardService.getContentInfo(content_idx);
 		model.addAttribute("readContentBean",readContentBean);
-		List <ContentInfo> contentList = boardService.getContentList(boardInfoBeanIdx4);
+		List <ContentInfo> contentList = boardService.getContentList(boardInfoBeanIdx4,page);
 		model.addAttribute("contentList",contentList);
 		
 		return "board/readSport";
@@ -246,11 +252,13 @@ public class BoardController {
 	
 
 	@GetMapping("/writeFun")
-	public String writeFun(@ModelAttribute("writeContentBean") ContentInfo writeContentBean,@RequestParam("boardInfoBeanIdx2") int boardInfoBeanIdx2,Model model) {
+	public String writeFun(@ModelAttribute("writeContentBean") ContentInfo writeContentBean,
+			@RequestParam(value="page" ,defaultValue="1") int page,
+			@RequestParam("boardInfoBeanIdx2") int boardInfoBeanIdx2,Model model) {
 		boardInfoBean.setBOARD_INFO_IDX(boardService.getBoardInfoIdx2());
 		writeContentBean.setContent_board_idx(boardInfoBeanIdx2);
 		model.addAttribute("boardInfoBeanIdx1", boardService.getBoardInfoIdx2());
-		List <ContentInfo> contentList = boardService.getContentList(boardInfoBeanIdx2);
+		List <ContentInfo> contentList = boardService.getContentList(boardInfoBeanIdx2,page);
 		model.addAttribute("contentList",contentList);
 		return "board/writeFun";
 	}
@@ -268,10 +276,12 @@ public class BoardController {
 	}
 	
 	@GetMapping("/writePolitics")
-	public String writePolitics(@ModelAttribute("writeContentBean") ContentInfo writeContentBean,@RequestParam("boardInfoBeanIdx3") int boardInfoBeanIdx3,Model model) {
+	public String writePolitics(@ModelAttribute("writeContentBean") ContentInfo writeContentBean,
+			@RequestParam(value="page" ,defaultValue="1") int page
+			,@RequestParam("boardInfoBeanIdx3") int boardInfoBeanIdx3,Model model) {
 		boardInfoBean.setBOARD_INFO_IDX(boardService.getBoardInfoIdx3());
 		writeContentBean.setContent_board_idx(boardInfoBeanIdx3);
-		List <ContentInfo> contentList = boardService.getContentList(boardInfoBeanIdx3);
+		List <ContentInfo> contentList = boardService.getContentList(boardInfoBeanIdx3,page);
 		model.addAttribute("contentList",contentList);
 		model.addAttribute("boardInfoBeanIdx1", boardService.getBoardInfoIdx3());
 		return "board/writePolitics";
@@ -290,10 +300,12 @@ public class BoardController {
 	}
 	
 	@GetMapping("/writeSport")
-	public String writeSport(@ModelAttribute("writeContentBean") ContentInfo writeContentBean,@RequestParam("boardInfoBeanIdx4") int boardInfoBeanIdx4,Model model) {
+	public String writeSport(@ModelAttribute("writeContentBean") ContentInfo writeContentBean,
+			@RequestParam(value="page" ,defaultValue="1") int page,
+			@RequestParam("boardInfoBeanIdx4") int boardInfoBeanIdx4,Model model) {
 		boardInfoBean.setBOARD_INFO_IDX(boardService.getBoardInfoIdx4());
 		writeContentBean.setContent_board_idx(boardInfoBeanIdx4);
-		List <ContentInfo> contentList = boardService.getContentList(boardInfoBeanIdx4);
+		List <ContentInfo> contentList = boardService.getContentList(boardInfoBeanIdx4,page);
 		model.addAttribute("contentList",contentList);
 		model.addAttribute("boardInfoBeanIdx1", boardService.getBoardInfoIdx4());
 		return "board/writeSport";
@@ -335,24 +347,28 @@ public class BoardController {
 	}
 	
 	@GetMapping("/free")
-	public String free(@RequestParam("boardInfoBeanIdx1")int boardInfoBeanIdx1,Model model) {
+	public String free(@RequestParam("boardInfoBeanIdx1")int boardInfoBeanIdx1,
+									@RequestParam(value="page" ,defaultValue="1") int page,
+									Model model) {
 		boardInfoBean.setBOARD_INFO_IDX(boardService.getBoardInfoIdx1());
 		model.addAttribute("boardInfoBeanIdx1", boardService.getBoardInfoIdx1());
 
-		List <ContentInfo> contentList  = boardService.getContentList(boardInfoBeanIdx1);
-		
+		List <ContentInfo> contentList  = boardService.getContentList(boardInfoBeanIdx1,page);
 		model.addAttribute("contentList",contentList);
 		
+		
+		PageInfo pageBean  = boardService.getContentCnt(boardInfoBeanIdx1, page);
+		model.addAttribute("pageBean",pageBean);
 		return "board/free";
 		
 	}
 	
 	@GetMapping("/fun")
-	public String fun(@RequestParam("boardInfoBeanIdx2")int boardInfoBeanIdx2,Model model) {
+	public String fun(@RequestParam("boardInfoBeanIdx2")int boardInfoBeanIdx2,@RequestParam(value="page" ,defaultValue="1") int page,Model model) {
 		boardInfoBean.setBOARD_INFO_IDX(boardService.getBoardInfoIdx2());
 		model.addAttribute("boardInfoBeanIdx2", boardService.getBoardInfoIdx2());
 
-		List <ContentInfo> contentList  = boardService.getContentList(boardInfoBeanIdx2);
+		List <ContentInfo> contentList  = boardService.getContentList(boardInfoBeanIdx2,page);
 
 		for(ContentInfo obj : contentList) {
 		
@@ -374,11 +390,11 @@ public class BoardController {
 		
 	}
 	@GetMapping("/politics")
-	public String politics(@RequestParam("boardInfoBeanIdx3")int boardInfoBeanIdx3,Model model) {
+	public String politics(@RequestParam("boardInfoBeanIdx3")int boardInfoBeanIdx3,@RequestParam(value="page" ,defaultValue="1") int page,Model model) {
 		boardInfoBean.setBOARD_INFO_IDX(boardService.getBoardInfoIdx1());
 		model.addAttribute("boardInfoBeanIdx3", boardService.getBoardInfoIdx1());
 
-		List <ContentInfo> contentList  = boardService.getContentList(boardInfoBeanIdx3);
+		List <ContentInfo> contentList  = boardService.getContentList(boardInfoBeanIdx3,page);
 
 		for(ContentInfo obj : contentList) {
 		
@@ -400,11 +416,11 @@ public class BoardController {
 		
 	}
 	@GetMapping("/sport")
-	public String sport(@RequestParam("boardInfoBeanIdx4")int boardInfoBeanIdx4,Model model) {
+	public String sport(@RequestParam("boardInfoBeanIdx4")int boardInfoBeanIdx4,@RequestParam(value="page" ,defaultValue="1") int page,Model model) {
 		boardInfoBean.setBOARD_INFO_IDX(boardService.getBoardInfoIdx4());
 		model.addAttribute("boardInfoBeanIdx4", boardService.getBoardInfoIdx4());
 
-		List <ContentInfo> contentList  = boardService.getContentList(boardInfoBeanIdx4);
+		List <ContentInfo> contentList  = boardService.getContentList(boardInfoBeanIdx4,page);
 
 		for(ContentInfo obj : contentList) {
 		
