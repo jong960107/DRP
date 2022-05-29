@@ -16,6 +16,7 @@ import org.springframework.validation.Validator;
 import com.jong960107.beans.UserInfo;
 
 @PropertySource(value = "classpath:/dropthebeat_alone-2/src/main/resources/messages.properties", encoding="UTF-8")
+@PropertySource(value = "classpath:/dropthebeat_alone-2/src/main/resources/option.properties", encoding="UTF-8")
 public class UserValidator implements Validator{
 
 	

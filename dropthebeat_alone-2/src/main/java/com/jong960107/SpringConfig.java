@@ -13,6 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.jong960107.beans.BoardInfo;
 import com.jong960107.beans.UserInfo;
 import com.jong960107.interceptor.CheckLoginInterceptor;
+import com.jong960107.interceptor.CheckWriterInterceptor;
 import com.jong960107.interceptor.TopMenuInterceptor;
 import com.jong960107.service.BoardService;
 
@@ -37,6 +38,11 @@ public class SpringConfig implements WebMvcConfigurer {
 		InterceptorRegistration reg2 = registry.addInterceptor(checkLoginInterceptor);
 		reg2.addPathPatterns("/user/modify","/user/logout","/board/*");
 		reg2.excludePathPatterns("/board/free","/board/fun","/board/politics","/board/sport","/board/record");
+
+		CheckWriterInterceptor checkWriterInterceptor = new CheckWriterInterceptor(loginUserBean, boardInfoService);
+		InterceptorRegistration reg3 = registry.addInterceptor(checkWriterInterceptor);
+		reg3.addPathPatterns("/board/modifySport","/board/modifyPolitics","/board/modifyFun","/board/modifyFree","/board/deleteFree");
+	
 	}
 
 	
