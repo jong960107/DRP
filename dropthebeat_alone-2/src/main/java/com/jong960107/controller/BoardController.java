@@ -438,7 +438,7 @@ public class BoardController {
 		model.addAttribute("contentText",contentText);
 		model.addAttribute("contentFile",contentFile);
 		}
-		return "board/politics";
+		return "board/sport";
 		
 	}
 	

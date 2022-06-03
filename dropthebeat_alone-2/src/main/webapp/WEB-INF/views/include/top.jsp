@@ -47,7 +47,7 @@
 	<div class="collapse navbar-collapse" id="navMenu">
 		<ul class="navbar-nav">
 			<li class="nav-item">
-				 <a href="${root }board/record" class="nav-link" id="recordButton">녹음시작</a>
+				 <a href="${root }board/record" class="nav-link" id="recordButton">녹음연습</a>
 			</li>
 			<li class="nav-item">
 				 <a href="${root}board/free?boardInfoBeanIdx1=${boardInfoBeanIdx1}" class="nav-link" id="freeButton">자유게시판</a>
@@ -90,7 +90,11 @@
 </nav>
 
 
-<div id="content"></div>
+<div id="content">
+	
+
+			
+</div>
 
 
 
