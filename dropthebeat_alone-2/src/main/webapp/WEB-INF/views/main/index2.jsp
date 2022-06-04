@@ -438,7 +438,7 @@ table {
     </div>
 
 <div id="recordDownload">
-    <audio type="hidden" controls class="audio-element hide" id="recordDownload"> </audio>
+    <audio controls class="audio-element hide" > </audio>
 </div>
 	<script type="text/javascript">
 	
