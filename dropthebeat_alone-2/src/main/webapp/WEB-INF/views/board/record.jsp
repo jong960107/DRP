@@ -19,6 +19,10 @@
 
 <body>
 
+<div id="playMusic">
+		<audio src="/1.mp3" controls="controls"></audio>
+</div>
+	
 <c:import url="/WEB-INF/views/include/top.jsp"> </c:import>
 
 <c:import url="/WEB-INF/views/main/index2.jsp"> </c:import>

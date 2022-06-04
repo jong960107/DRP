@@ -38,6 +38,11 @@ public class BoardService {
 	@Resource(name="loginUserBean")
 	private UserInfo loginUserBean;
 	
+	public String getFileReadName() {
+		return path_upload;
+	}
+	
+	
 	public List<ContentInfo>getContentList(int board_info_idx, int page){
 
 		int start = (page-1) * page_listcnt;
@@ -77,7 +82,8 @@ public class BoardService {
 		String file_name = System.currentTimeMillis()+"_"+upload_file.getOriginalFilename();
 		
 		try {
-			upload_file.transferTo(new File(path_upload+"/"+file_name));
+			upload_file.transferTo(new File(path_upload+file_name));
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

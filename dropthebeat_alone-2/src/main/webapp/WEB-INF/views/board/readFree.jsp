@@ -44,8 +44,9 @@
 					</div>
 					<c:if test="${readContentBean.content_file != null }">
 					<div class="form-group">
-						<label for="board_file">첨부 이미지</label>
-						<img src="${root }upload/${readContentBean.content_file}" width="100%"/>						
+						<label for="board_file">첨부음악</label>
+						<audio controls="controls" src="${root }${readContentBean.content_file}" width="100%"></audio>	
+						
 					</div>
 					</c:if>
 					<div class="form-group">

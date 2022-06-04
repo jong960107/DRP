@@ -146,7 +146,8 @@ public class BoardController {
 									@RequestParam("content_idx") int content_idx,
 									@RequestParam(value="page" ,defaultValue="1") int page,
 									Model model) {
-		
+		String fileReadName = boardService.getFileReadName();
+		model.addAttribute("fileReadName",fileReadName);
 		ContentInfo readContentBean = boardService.getContentInfo(content_idx);
 		model.addAttribute("readContentBean",readContentBean);
 		model.addAttribute("content_idx",content_idx);
