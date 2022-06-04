@@ -47,7 +47,7 @@
 	<div class="collapse navbar-collapse" id="navMenu">
 		<ul class="navbar-nav">
 			<li class="nav-item">
-				 <a href="${root }board/record" class="nav-link" id="recordButton">녹음연습</a>
+				 <a href="${root }board/record" class="nav-link" id="recordButton">녹음시작</a>
 			</li>
 			<li class="nav-item">
 				 <a href="${root}board/free?boardInfoBeanIdx1=${boardInfoBeanIdx1}" class="nav-link" id="freeButton">자유게시판</a>
@@ -65,15 +65,13 @@
 		
 		<ul class="navbar-nav ml-auto">
 			<c:choose>
-				<c:when test="${loginUserBean.userLogin == true}">
+				<c:when test="${loginUserBean.userLogin==true}">
 				<li class="nav-item">
 				<a href="${root }user/modify" class="nav-link">정보수정</a>
 				</li>
 				<li class="nav-item">
 					<a href="${root }user/logout" class="nav-link">로그아웃</a>
 				</li>
-				
-						
 					</c:when>
 				<c:otherwise>
 				<li class="nav-item">

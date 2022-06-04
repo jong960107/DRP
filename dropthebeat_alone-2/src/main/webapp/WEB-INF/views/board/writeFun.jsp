@@ -45,7 +45,7 @@
 		<div class="col-sm-6">
 			<div class="card shadow">
 				<div class="card-body">
-					<form:form action="${root }board/writeFunSuccess" method="post" modelAttribute="writeContentBean">
+					<form:form action="${root }board/writeFunSuccess" method="POST" modelAttribute="writeContentBean" enctype="multipart/form-data">
 					<form:hidden path="content_board_idx"/>
 					<div class="form-group">
 						<form:label path="content_subject">제목</form:label>
@@ -63,7 +63,7 @@
 					</div>
 					<div class="form-group">
 						<div class="text-right">
-							<form:button class="btn btn-primary">작성하기</form:button>
+							<form:button class="btn btn-primary" >작성하기</form:button>
 						</div>
 					</div>
 					

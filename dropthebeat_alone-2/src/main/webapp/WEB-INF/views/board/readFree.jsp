@@ -10,12 +10,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 </head>
 <body>
 
-	 <c:import url="/WEB-INF/views/include/top.jsp"> </c:import>
+ <c:import url="/WEB-INF/views/include/top.jsp"> </c:import>
 	
 <!-- 상단 메뉴 부분 -->
 
@@ -46,14 +45,15 @@
 					<div class="form-group">
 						<label for="board_file">첨부음악</label>
 						<audio controls="controls" src="${root }${readContentBean.content_file}" width="100%"></audio>	
-						
 					</div>
 					</c:if>
 					<div class="form-group">
 						<div class="text-right">
 								<a href="${root }board/free?boardInfoBeanIdx1=${boardInfoBeanIdx1}" class="btn btn-primary">목록보기</a>			
-								<a href="${root }board/modifyFree?boardInfoBeanIdx1=${boardInfoBeanIdx1}&content_idx=${content_idx}" class="btn btn-info">수정하기</a>
-								<a href="${root }board/deleteFree?boardInfoBeanIdx1=${boardInfoBeanIdx1}&content_idx=${content_idx}" class="btn btn-danger">삭제하기</a>
+									<c:if test="${loginUserBean.user_idx == readContentBean.content_writer_idx }">
+									<a href="${root }board/modifyFree?boardInfoBeanIdx1=${boardInfoBeanIdx1}&content_idx=${content_idx}" class="btn btn-info">수정하기</a>
+									<a href="${root }board/deleteFree?boardInfoBeanIdx1=${boardInfoBeanIdx1}&content_idx=${content_idx}" class="btn btn-danger">삭제하기</a>
+								</c:if>
 						</div>
 					</div>
 				</div>

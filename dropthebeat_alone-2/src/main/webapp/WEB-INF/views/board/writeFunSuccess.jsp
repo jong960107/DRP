@@ -5,5 +5,5 @@
 <c:set var="root" value="/"></c:set>
 <script>
 alert("저장에 성공하셨습니다.");
-location.href="${root}board/free?boardInfoBeanIdx2=${boardInfoBeanIdx2}"
+location.href="${root}board/fun?boardInfoBeanIdx2=${boardInfoBeanIdx2}"
 </script>

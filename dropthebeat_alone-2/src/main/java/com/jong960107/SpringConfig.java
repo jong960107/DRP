@@ -37,7 +37,8 @@ public class SpringConfig implements WebMvcConfigurer {
 		CheckLoginInterceptor checkLoginInterceptor = new CheckLoginInterceptor(loginUserBean, boardInfoBean);
 		InterceptorRegistration reg2 = registry.addInterceptor(checkLoginInterceptor);
 		reg2.addPathPatterns("/user/modify","/user/logout","/board/*");
-		reg2.excludePathPatterns("/board/free","/board/fun","/board/politics","/board/sport","/board/record");
+		reg2.excludePathPatterns("/board/free","/board/fun","/board/politics","/board/sport","/board/record"
+														,"/board/readFree","/board/readFun","/board/readPolitics","/board/readSport");
 
 		CheckWriterInterceptor checkWriterInterceptor = new CheckWriterInterceptor(loginUserBean, boardInfoService);
 		InterceptorRegistration reg3 = registry.addInterceptor(checkWriterInterceptor);

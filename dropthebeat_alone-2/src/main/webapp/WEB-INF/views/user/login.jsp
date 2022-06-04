@@ -114,7 +114,6 @@
 				<form:errors path="user_pw" style="color:red"></form:errors><br><br>
 			</div>
 			<form:button class="btn btn-primary submit" id="loginButton">로그인</form:button>
-			<form:button class="btn btn-success" id="signUpButton" onclick="location.href='${root}user/signup' ">회원가입</form:button>
 			<form:button type="button" class="btn btn-danger" id="loginButton" onclick="location.href='${root }main/index' " >취소</form:button>
 		
 		</form:form>

@@ -45,7 +45,8 @@ public class UserController {
 	}
 	
 	@PostMapping("/loginPro")
-	public String loginPro(@Valid @ModelAttribute("loginUserInfo") UserInfo loginUserInfo ,BindingResult result) {
+	public String loginPro(@Valid @ModelAttribute("loginUserInfo") UserInfo loginUserInfo ,BindingResult result,
+			Model model) {
 		if(result.hasErrors()) {
 			
 			System.out.println(result);
@@ -55,6 +56,9 @@ public class UserController {
 			userService.getLoginUserInfo(loginUserInfo);
 
 		if(loginUserBean.isUserLogin()==true){
+			model.addAttribute("loginUserBean",loginUserBean);
+			loginUserBean.setUserLogin(true);
+			
 			return "user/loginSuccess";
 		} else {
 			return "user/loginFail";
@@ -63,10 +67,11 @@ public class UserController {
 	
 	
 	@GetMapping("/logout")
-	public String logout() {
+	public String logout(Model model) {
 		
 		loginUserBean.setUserLogin(false);
-		
+		model.addAttribute("loginUserBean",loginUserBean);
+
 		return "user/logout";
 	}
 	

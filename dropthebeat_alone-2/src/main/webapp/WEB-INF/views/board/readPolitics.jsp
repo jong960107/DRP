@@ -45,14 +45,16 @@
 					<c:if test="${readContentBean.content_file != null }">
 					<div class="form-group">
 						<label for="board_file">첨부 이미지</label>
-						<img src="${root }upload/${readContentBean.content_file}" width="100%"/>						
+						<audio controls="controls" src="${root }${readContentBean.content_file}" width="100%"></audio>	
 					</div>
 					</c:if>
 					<div class="form-group">
 						<div class="text-right">
 							<a href="${root }board/readPolitics?boardInfoBeanIdx3=${boardInfoBeanIdx3}" class="btn btn-primary">목록보기</a>
+							<c:if test="${loginUserBean.user_idx == readContentBean.content_writer_idx }">
 							<a href="${root }board/modifyPolitics?boardInfoBeanIdx3=${boardInfoBeanIdx3}" class="btn btn-info">수정하기</a>
 							<a href="board_main.html" class="btn btn-danger">삭제하기</a>
+							</c:if>
 						</div>
 					</div>
 				</div>

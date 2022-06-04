@@ -146,6 +146,8 @@ public class BoardController {
 									@RequestParam("content_idx") int content_idx,
 									@RequestParam(value="page" ,defaultValue="1") int page,
 									Model model) {
+		
+		
 		String fileReadName = boardService.getFileReadName();
 		model.addAttribute("fileReadName",fileReadName);
 		ContentInfo readContentBean = boardService.getContentInfo(content_idx);
@@ -155,25 +157,6 @@ public class BoardController {
 		List <ContentInfo> contentList = new ArrayList<ContentInfo>();
 		contentList = boardService.getContentList(boardInfoBeanIdx1,page);
 		model.addAttribute("contentList",contentList);
-		for(ContentInfo obj : contentList) {
-		
-		int contentIdx = obj.getContent_idx();	
-		String contentWriterName = obj.getContent_writer_name();
-		String contentDate = obj.getContent_date();
-		String contentSubject = obj.getContent_subject();
-		String contentText = obj.getContent_text();
-		String contentFile = obj.getContent_file();
-		
-		model.addAttribute("contentIdx",contentIdx);
-		model.addAttribute("contentWriterName",contentWriterName);
-		model.addAttribute("contentDate",contentDate);
-		model.addAttribute("contentSubject",contentSubject);
-		model.addAttribute("contentText",contentText);
-		model.addAttribute("contentFile",contentFile);
-		model.addAttribute("obj",obj);
-		}
-		
-		model.addAttribute("loginUserBean",loginUserBean);
 		
 		return "board/readFree";
 	}
@@ -184,6 +167,10 @@ public class BoardController {
 									@RequestParam("content_idx") int content_idx,
 									@RequestParam(value="page" ,defaultValue="1") int page,
 									Model model) {
+
+		
+		String fileReadName = boardService.getFileReadName();
+		model.addAttribute("fileReadName",fileReadName);
 		model.addAttribute("boardInfoBeanIdx2",boardInfoBeanIdx2);
 		ContentInfo readContentBean = new ContentInfo();
 		readContentBean = boardService.getContentInfo(content_idx);
@@ -199,6 +186,10 @@ public class BoardController {
 									@RequestParam("content_idx") int content_idx,
 									@RequestParam(value="page" ,defaultValue="1") int page,
 									Model model) {
+		
+	
+		String fileReadName = boardService.getFileReadName();
+		model.addAttribute("fileReadName",fileReadName);
 		model.addAttribute("boardInfoBeanIdx3",boardInfoBeanIdx3);
 		ContentInfo readContentBean = new ContentInfo();
 		readContentBean = boardService.getContentInfo(content_idx);
@@ -216,6 +207,10 @@ public class BoardController {
 									@RequestParam("content_idx") int content_idx,
 									@RequestParam(value="page" ,defaultValue="1") int page,
 									Model model) {
+		
+	
+		String fileReadName = boardService.getFileReadName();
+		model.addAttribute("fileReadName",fileReadName);
 		model.addAttribute("boardInfoBeanIdx4",boardInfoBeanIdx4);
 		ContentInfo readContentBean = new ContentInfo();
 		readContentBean = boardService.getContentInfo(content_idx);
@@ -357,7 +352,6 @@ public class BoardController {
 		List <ContentInfo> contentList  = boardService.getContentList(boardInfoBeanIdx1,page);
 		model.addAttribute("contentList",contentList);
 		
-		
 		PageInfo pageBean  = boardService.getContentCnt(boardInfoBeanIdx1, page);
 		model.addAttribute("pageBean",pageBean);
 		return "board/free";
@@ -370,50 +364,29 @@ public class BoardController {
 		model.addAttribute("boardInfoBeanIdx2", boardService.getBoardInfoIdx2());
 
 		List <ContentInfo> contentList  = boardService.getContentList(boardInfoBeanIdx2,page);
-
-		for(ContentInfo obj : contentList) {
+		model.addAttribute("contentList",contentList);
 		
-		int contentIdx = obj.getContent_idx();	
-		String contentWriterName = obj.getContent_writer_name();
-		String contentDate = obj.getContent_date();
-		String contentSubject = obj.getContent_subject();
-		String contentText = obj.getContent_text();
-		String contentFile = obj.getContent_file();
 		
-		model.addAttribute("contentIdx",contentIdx);
-		model.addAttribute("contentWriterName",contentWriterName);
-		model.addAttribute("contentDate",contentDate);
-		model.addAttribute("contentSubject",contentSubject);
-		model.addAttribute("contentText",contentText);
-		model.addAttribute("contentFile",contentFile);
-		}
+		PageInfo pageBean  = boardService.getContentCnt(boardInfoBeanIdx2, page);
+		model.addAttribute("pageBean",pageBean);
 		return "board/fun";
 		
 	}
 	@GetMapping("/politics")
 	public String politics(@RequestParam("boardInfoBeanIdx3")int boardInfoBeanIdx3,@RequestParam(value="page" ,defaultValue="1") int page,Model model) {
-		boardInfoBean.setBOARD_INFO_IDX(boardService.getBoardInfoIdx1());
-		model.addAttribute("boardInfoBeanIdx3", boardService.getBoardInfoIdx1());
+		boardInfoBean.setBOARD_INFO_IDX(boardService.getBoardInfoIdx3());
+		model.addAttribute("boardInfoBeanIdx3", boardService.getBoardInfoIdx3());
+		boardInfoBean.setBOARD_INFO_IDX(boardService.getBoardInfoIdx3());
+		model.addAttribute("boardInfoBeanIdx3", boardService.getBoardInfoIdx3());
 
 		List <ContentInfo> contentList  = boardService.getContentList(boardInfoBeanIdx3,page);
-
-		for(ContentInfo obj : contentList) {
+		model.addAttribute("contentList",contentList);
 		
-		int contentIdx = obj.getContent_idx();	
-		String contentWriterName = obj.getContent_writer_name();
-		String contentDate = obj.getContent_date();
-		String contentSubject = obj.getContent_subject();
-		String contentText = obj.getContent_text();
-		String contentFile = obj.getContent_file();
 		
-		model.addAttribute("contentIdx",contentIdx);
-		model.addAttribute("contentWriterName",contentWriterName);
-		model.addAttribute("contentDate",contentDate);
-		model.addAttribute("contentSubject",contentSubject);
-		model.addAttribute("contentText",contentText);
-		model.addAttribute("contentFile",contentFile);
-		}
+		PageInfo pageBean  = boardService.getContentCnt(boardInfoBeanIdx3, page);
+		model.addAttribute("pageBean",pageBean);
 		return "board/politics";
+		
 		
 	}
 	@GetMapping("/sport")
@@ -422,25 +395,13 @@ public class BoardController {
 		model.addAttribute("boardInfoBeanIdx4", boardService.getBoardInfoIdx4());
 
 		List <ContentInfo> contentList  = boardService.getContentList(boardInfoBeanIdx4,page);
-
-		for(ContentInfo obj : contentList) {
+		model.addAttribute("contentList",contentList);
 		
-		int contentIdx = obj.getContent_idx();	
-		String contentWriterName = obj.getContent_writer_name();
-		String contentDate = obj.getContent_date();
-		String contentSubject = obj.getContent_subject();
-		String contentText = obj.getContent_text();
-		String contentFile = obj.getContent_file();
 		
-		model.addAttribute("contentIdx",contentIdx);
-		model.addAttribute("contentWriterName",contentWriterName);
-		model.addAttribute("contentDate",contentDate);
-		model.addAttribute("contentSubject",contentSubject);
-		model.addAttribute("contentText",contentText);
-		model.addAttribute("contentFile",contentFile);
-		}
+		PageInfo pageBean  = boardService.getContentCnt(boardInfoBeanIdx4, page);
+		model.addAttribute("pageBean",pageBean);
 		return "board/sport";
-		
+			
 	}
 	
 	

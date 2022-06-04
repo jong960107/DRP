@@ -48,14 +48,14 @@ public class TopMenuInterceptor implements HandlerInterceptor{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
-
+		
 		
 		request.setAttribute("boardInfoBeanIdx1", boardService.getBoardInfoIdx1());
 		request.setAttribute("boardInfoBeanIdx2", boardService.getBoardInfoIdx2());
 		request.setAttribute("boardInfoBeanIdx3", boardService.getBoardInfoIdx3());
 		request.setAttribute("boardInfoBeanIdx4", boardService.getBoardInfoIdx4());
-
 		request.setAttribute("loginUserBean", loginUserBean);
+		
 		return true;
 	}
 	
